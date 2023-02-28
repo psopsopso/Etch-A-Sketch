@@ -4,25 +4,31 @@ const rainbowMode = document.querySelector("#rainbow-mode");
 
 resetBtn.addEventListener("click", resetGrid);
 
-for (let i = 0; i < 64 * 64; i++) {
+const BASE_WIDTH_HEIGHT = 64;
+
+for (let i = 0; i < BASE_WIDTH_HEIGHT * BASE_WIDTH_HEIGHT; i++) {
   const div = document.createElement("div");
   div.classList.add("etch-div");
   container.appendChild(div);
   div.addEventListener("mouseenter", () => {
     if (rainbowMode.checked) {
       div.style.backgroundColor = getRandomColor();
+    } else {
+      div.style.backgroundColor = "black";
     }
-    div.style.backgroundColor = "black";
   });
 }
 
 function resetGrid() {
   gridSquares = document.querySelectorAll(".etch-div");
   gridSquares.forEach((square) => {
-    square.style.backgroundColor = "white";
+    square.style.backgroundColor = "lightgray";
   });
 }
 
 function getRandomColor() {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
 }
