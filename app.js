@@ -2,7 +2,10 @@ const container = document.querySelector("#main-container");
 const resetBtn = document.querySelector("#reset-btn");
 const generateBtn = document.querySelector("#generate-btn");
 const gridsizeInput = document.querySelector("#gridsize-input");
+const modeToggleBtn = document.querySelector("#mode-toggle");
 // const clickMode = document.querySelector("#click-mode");
+
+let isRainbowMode = true;
 
 resetBtn.addEventListener("click", resetColors);
 // generateBtn.addEventListener("click", generateGrid);
@@ -10,6 +13,11 @@ gridsizeInput.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     generateGrid();
   }
+});
+
+modeToggleBtn.addEventListener("click", () => {
+  isRainbowMode = !isRainbowMode;
+  modeToggleBtn.textContent = isRainbowMode ? "Rainbow Mode" : "Plain Mode";
 });
 
 function generateGrid() {
@@ -38,7 +46,11 @@ function createSquare() {
   const square = document.createElement("div");
   square.classList.add("etch-div");
   square.addEventListener("mouseover", () => {
-    square.style.backgroundColor = getRandomColor();
+    if (isRainbowMode) {
+      square.style.backgroundColor = getRandomColor();
+    } else {
+      square.style.backgroundColor = "beige";
+    }
   });
   return square;
 }
