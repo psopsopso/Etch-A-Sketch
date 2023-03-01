@@ -5,21 +5,26 @@ const gridsizeInput = document.querySelector("#gridsize-input");
 // const clickMode = document.querySelector("#click-mode");
 
 resetBtn.addEventListener("click", resetColors);
-generateBtn.addEventListener("click", generateGrid);
+// generateBtn.addEventListener("click", generateGrid);
+gridsizeInput.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    generateGrid();
+  }
+});
 
 function generateGrid() {
   container.innerHTML = "";
   let squares = gridsizeInput.value;
+  setGridTemplate(squares);
   for (let i = 0; i < squares * squares; i++) {
-    container.style.gridTemplateRows = `repeat(${squares}, 1fr)`;
-    container.style.gridTemplateColumns = `repeat(${squares}, 1fr)`;
-    const square = document.createElement("div");
-    square.classList.add("etch-div");
-    square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = getRandomColor();
-    });
+    const square = createSquare();
     container.appendChild(square);
   }
+}
+
+function setGridTemplate(squares) {
+  container.style.gridTemplateRows = `repeat(${squares}, 1fr)`;
+  container.style.gridTemplateColumns = `repeat(${squares}, 1fr)`;
 }
 
 function resetColors() {
@@ -27,6 +32,15 @@ function resetColors() {
   gridSquares.forEach((square) => {
     square.style.backgroundColor = "black";
   });
+}
+
+function createSquare() {
+  const square = document.createElement("div");
+  square.classList.add("etch-div");
+  square.addEventListener("mouseover", () => {
+    square.style.backgroundColor = getRandomColor();
+  });
+  return square;
 }
 
 function getRandomColor() {
