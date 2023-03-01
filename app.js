@@ -1,22 +1,28 @@
 const container = document.querySelector("#main-container");
 const resetBtn = document.querySelector("#reset-btn");
-const rainbowMode = document.querySelector("#rainbow-mode");
+const generateBtn = document.querySelector("#generate-btn");
+const gridsizeInput = document.querySelector("#gridsize-input");
+// const clickMode = document.querySelector("#click-mode");
 
-const BASE_WIDTH_HEIGHT = 64;
-resetBtn.addEventListener("click", resetGrid);
+resetBtn.addEventListener("click", resetColors);
+generateBtn.addEventListener("click", generateGrid);
 
-function initialize() {
-  for (let i = 0; i < BASE_WIDTH_HEIGHT * BASE_WIDTH_HEIGHT; i++) {
-    const div = document.createElement("div");
-    div.classList.add("etch-div");
-    container.appendChild(div);
-    div.addEventListener("mouseenter", () => {
-      div.style.backgroundColor = getRandomColor();
+function generateGrid() {
+  container.innerHTML = "";
+  let squares = gridsizeInput.value;
+  for (let i = 0; i < squares * squares; i++) {
+    container.style.gridTemplateRows = `repeat(${squares}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${squares}, 1fr)`;
+    const square = document.createElement("div");
+    square.classList.add("etch-div");
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = getRandomColor();
     });
+    container.appendChild(square);
   }
 }
 
-function resetGrid() {
+function resetColors() {
   gridSquares = document.querySelectorAll(".etch-div");
   gridSquares.forEach((square) => {
     square.style.backgroundColor = "black";
@@ -30,4 +36,4 @@ function getRandomColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-initialize();
+generateGrid();

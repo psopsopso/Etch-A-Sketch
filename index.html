@@ -6,18 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Etch-A-Sketch</title>
+    <title>Lite-A-Sketch</title>
 </head>
 
 <body>
     <header>
-        <h1>Etch-A-Sketch</h1>
+        <h1>Lite-A-Sketch</h1>
     </header>
     <section>
-        <div id="topBtns">
-            <button id="reset-btn">Reset</button>
-            <label for="">Click mode</label>
-            <input id="click-mode" type="checkbox">
+        <div id="settings">
+            <label>Grid Size</label>
+            <input id="gridsize-input" type="text" size="2" value="64" min="1" max="100">
+            <button id="generate-btn">Generate</button>
+            <button id="reset-btn">Reset colors</button>
         </div>
     </section>
     <section>

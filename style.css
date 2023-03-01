@@ -6,7 +6,7 @@ h1 {
     text-align: center;
 }
 
-#topBtns {
+#settings {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -17,14 +17,11 @@ button {
     margin: 10px 0 10px 0;
 }
 
-
 #main-container {
     box-sizing: content-box;
     width: 960px;
     height: 960px;
     display: grid;
-    grid-template-columns: repeat(64, 1fr);
-    grid-template-rows: repeat(64, 1fr);
     border: 5px solid black;
     border-radius: 5px;
     text-align: center;
