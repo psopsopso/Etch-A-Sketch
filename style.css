@@ -1,9 +1,26 @@
+:root {
+    --main-container-size: 90vw;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --main-container-size: 600px;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
+    font-weight: bold;
+}
+
+body {
+    background: linear-gradient(to bottom, #f7b768, #ed6a3a);
+    font-family: roboto;
+    background-attachment: fixed;
 }
 
 #settings {
@@ -11,19 +28,31 @@ h1 {
     justify-content: center;
     gap: 10px;
     align-items: center;
+    margin: 15px;
 }
 
 button {
-    margin: 10px 0 10px 0;
+    background-color: beige;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: bisque;
 }
 
 #main-container {
-    box-sizing: content-box;
-    width: 960px;
-    height: 960px;
+    width: var(--main-container-size);
+    height: var(--main-container-size);
     display: grid;
-    border: 5px solid black;
-    border-radius: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    border: 20px solid beige;
+    border-radius: 10px;
     text-align: center;
     margin: auto;
     background-color: black;
@@ -33,4 +62,5 @@ button {
     border: 1px solid rgb(51, 44, 44);
     border-radius: 50%;
     background-color: black;
+    aspect-ratio: 1/1;
 }
