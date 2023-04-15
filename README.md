@@ -2,5 +2,5 @@
 
 Etch a sketch game created with HTML, CSS and JS.
 
-[Live preview] (https://psopsopso.github.io/Etch-A-Sketch/) 
+[Live preview](https://psopsopso.github.io/Etch-A-Sketch/) 
 
